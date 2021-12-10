@@ -4,9 +4,12 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-@Entity(name = "events")
+@Entity
+@Table(name = "events")
 @Data
 public class Event {
     @Id
@@ -31,4 +34,8 @@ public class Event {
 
     @OneToMany(mappedBy = "event",cascade = CascadeType.ALL)
     private List<Tag> tags;
+
+    public List<String> getStringTags() {
+        return tags.stream().map(Tag::getName).collect(Collectors.toList());
+    }
 }
