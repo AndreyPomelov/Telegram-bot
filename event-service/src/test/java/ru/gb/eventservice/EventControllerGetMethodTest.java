@@ -9,6 +9,7 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.transaction.annotation.Transactional;
+import ru.gb.eventservice.exception.EventNotFoundException;
 
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -85,4 +86,20 @@ public class EventControllerGetMethodTest {
                 .andExpect(jsonPath("$.[0].name").value("test 1"))
                 .andExpect(jsonPath("$.[1].name").value("test 2"));
     }
+
+    @Test
+    public void shouldReturnEventById() throws Exception {
+        mockMvc.perform(get("/events/{id}", 1))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value("1"))
+                .andExpect(jsonPath("$.name").value("test 1"));
+    }
+
+    @Test
+    public void shouldReturnEventNotFoundExceptionById() throws Exception {
+        mockMvc.perform(get("/events/{id}", 3))
+                .andExpect(status().isNotFound())
+                .andExpect(mvcResult -> mvcResult.getResolvedException().getClass().equals(EventNotFoundException.class));
+    }
+
 }

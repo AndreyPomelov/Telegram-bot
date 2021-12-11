@@ -2,17 +2,16 @@ package ru.gb.eventservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.gb.eventservice.controller.filter.EventFilter;
 import ru.gb.eventservice.domain.Event;
 import ru.gb.eventservice.dto.EventDto;
+import ru.gb.eventservice.exception.EventNotFoundException;
 import ru.gb.eventservice.service.EventService;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/events")
@@ -30,5 +29,9 @@ public class EventController {
         return ResponseEntity.ok().body(eventService.findAllDto(eventFilter.getSpec()));
     }
 
-
+    @GetMapping("/{id}")
+    public ResponseEntity<EventDto> getEvent(@PathVariable("id") Long id) throws EventNotFoundException {
+        EventDto event = eventService.findByIdDto(id);
+        return ResponseEntity.ok().body(event);
+    }
 }

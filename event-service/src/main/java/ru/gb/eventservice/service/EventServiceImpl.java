@@ -36,7 +36,13 @@ public class EventServiceImpl implements EventService{
     }
 
     @Override
-    public Event findById(Long id) {
+    public EventDto findByIdDto(Long id) throws EventNotFoundException {
+        Event event = findById(id);
+        return EventMapper.MAPPER.fromEvent(event);
+    }
+
+    @Override
+    public Event findById(Long id)  throws EventNotFoundException {
         String notFoundText = String.format("Can't found event with id = %d", id);
         return eventRepository.findById(id).orElseThrow(() -> new EventNotFoundException(notFoundText));
     }
