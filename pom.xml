@@ -17,7 +17,8 @@
 
     <properties>
         <java.version>11</java.version>
-        <sonar.organization>graduationproject</sonar.organization>
+        <sonar.organization>andreypomelov</sonar.organization>
+        <sonar.projectKey>AndreyPomelov_Telegram-bot</sonar.projectKey>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 
