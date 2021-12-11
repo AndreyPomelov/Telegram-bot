@@ -1,10 +1,6 @@
 package ru.gb.eventservice.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -14,8 +10,8 @@ public class EventDto {
     private String name;
     private String description;
     private String link;
-    private LocalDateTime date_start;
-    private LocalDateTime date_end;
+    private LocalDateTime dateStart;
+    private LocalDateTime dateEnd;
     private List<String> tags;
 
 }

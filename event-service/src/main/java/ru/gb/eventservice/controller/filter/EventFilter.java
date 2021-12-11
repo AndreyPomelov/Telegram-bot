@@ -7,24 +7,26 @@ import ru.gb.eventservice.repository.specification.EventSpecification;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 @Getter
 public class EventFilter {
+    private static final String KEY_FROM_DATE = "fromdate";
+    private static final String KEY_TO_DATE = "todate";
+
     private Specification<Event> spec;
 
     public EventFilter(Map<String, String> map) {
         this.spec = Specification.where(null);
-        if (map.containsKey("fromdate") && !map.get("fromdate").isEmpty()) {
-            LocalDate date = LocalDate.parse(map.get("fromdate"));
-            LocalDateTime from_date = date.atStartOfDay();
-            spec = spec.and(EventSpecification.dataGreaterOrEqualsThan("date_start", from_date));
+        if (map.containsKey(KEY_FROM_DATE) && !map.get(KEY_FROM_DATE).isEmpty()) {
+            LocalDate date = LocalDate.parse(map.get(KEY_FROM_DATE));
+            LocalDateTime localDateTime = date.atStartOfDay();
+            spec = spec.and(EventSpecification.dataGreaterOrEqualsThan("dateStart", localDateTime));
         }
-        if (map.containsKey("todate") && !map.get("todate").isEmpty()) {
-            LocalDate date = LocalDate.parse(map.get("todate"));
-            LocalDateTime to_date = date.atTime(23, 59, 59);
-            spec = spec.and(EventSpecification.dataLessOrEqualsThan("date_end", to_date));
+        if (map.containsKey(KEY_TO_DATE) && !map.get(KEY_TO_DATE).isEmpty()) {
+            LocalDate date = LocalDate.parse(map.get(KEY_TO_DATE));
+            LocalDateTime localDateTime = date.atTime(23, 59, 59);
+            spec = spec.and(EventSpecification.dataLessOrEqualsThan("dateEnd", localDateTime));
         }
     }
 

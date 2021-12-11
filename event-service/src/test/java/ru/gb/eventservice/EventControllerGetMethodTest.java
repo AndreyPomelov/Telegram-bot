@@ -28,7 +28,7 @@ public class EventControllerGetMethodTest {
     private MockMvc mockMvc;
 
     @Test
-    public void shouldReturnAllEvents() throws Exception {
+    void shouldReturnAllEvents() throws Exception {
         mockMvc.perform(get("/events"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.[0].name").value("test 1"))
@@ -36,21 +36,21 @@ public class EventControllerGetMethodTest {
     }
 
     @Test
-    public void shouldReturnOneEventFilterToDate() throws Exception {
+    void shouldReturnOneEventFilterToDate() throws Exception {
         mockMvc.perform(get("/events?todate=2021-12-08"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.[0].name").value("test 1"));
     }
 
     @Test
-    public void shouldReturnZeroEventFilterToDate() throws Exception {
+    void shouldReturnZeroEventFilterToDate() throws Exception {
         mockMvc.perform(get("/events?todate=2021-12-07"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("[]"));
     }
 
     @Test
-    public void shouldReturnTwoEventFilterToDate() throws Exception {
+    void shouldReturnTwoEventFilterToDate() throws Exception {
         mockMvc.perform(get("/events?todate=2021-12-11"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.[0].name").value("test 1"))
@@ -58,21 +58,21 @@ public class EventControllerGetMethodTest {
     }
 
     @Test
-    public void shouldReturnOneEventFilterFromDate() throws Exception {
+    void shouldReturnOneEventFilterFromDate() throws Exception {
         mockMvc.perform(get("/events?fromdate=2021-12-11"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.[0].name").value("test 2"));
     }
 
     @Test
-    public void shouldReturnZeroEventFilterFromDate() throws Exception {
+    void shouldReturnZeroEventFilterFromDate() throws Exception {
         mockMvc.perform(get("/events?fromdate=2021-12-12"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("[]"));
     }
 
     @Test
-    public void shouldReturnTwoEventFilterFromDate() throws Exception {
+    void shouldReturnTwoEventFilterFromDate() throws Exception {
         mockMvc.perform(get("/events?fromdate=2021-12-08"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.[0].name").value("test 1"))
@@ -80,7 +80,7 @@ public class EventControllerGetMethodTest {
     }
 
     @Test
-    public void shouldReturnTwoEventFilterFromDateToDate() throws Exception {
+    void shouldReturnTwoEventFilterFromDateToDate() throws Exception {
         mockMvc.perform(get("/events?fromdate=2021-12-08&todate=2021-12-11"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.[0].name").value("test 1"))
@@ -88,7 +88,7 @@ public class EventControllerGetMethodTest {
     }
 
     @Test
-    public void shouldReturnEventById() throws Exception {
+    void shouldReturnEventById() throws Exception {
         mockMvc.perform(get("/events/{id}", 1))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value("1"))
@@ -96,10 +96,9 @@ public class EventControllerGetMethodTest {
     }
 
     @Test
-    public void shouldReturnEventNotFoundExceptionById() throws Exception {
+    void shouldReturnEventNotFoundExceptionById() throws Exception {
         mockMvc.perform(get("/events/{id}", 3))
                 .andExpect(status().isNotFound())
                 .andExpect(mvcResult -> mvcResult.getResolvedException().getClass().equals(EventNotFoundException.class));
     }
-
 }
