@@ -12,7 +12,7 @@ import ru.gb.eventservice.repository.EventRepository;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+@Service("EventService")
 public class EventServiceImpl implements EventService{
 
     private EventRepository eventRepository;
@@ -31,7 +31,7 @@ public class EventServiceImpl implements EventService{
     public List<EventDto> findAllDto(Specification<Event> specification) {
         List<EventDto> result = new ArrayList<>();
         List<Event> events = eventRepository.findAll(specification);
-        events.stream().forEach(event -> result.add(EventMapper.MAPPER.fromEvent(event)));
+        events.forEach(event -> result.add(EventMapper.MAPPER.fromEvent(event)));
         return result;
     }
 
