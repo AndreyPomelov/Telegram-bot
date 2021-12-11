@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         "spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.H2Dialect"
 })
 @Transactional
-public class EventControllerGetMethodTest {
+class EventControllerGetMethodTest {
 
     @Autowired
     private MockMvc mockMvc;

@@ -2,7 +2,6 @@ package ru.gb.eventservice.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 import ru.gb.eventservice.domain.Event;
 import ru.gb.eventservice.dto.EventDto;
