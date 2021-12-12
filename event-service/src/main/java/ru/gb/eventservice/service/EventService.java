@@ -15,4 +15,5 @@ public interface EventService {
     EventDto findByIdDto(Long id) throws EventNotFoundException;
     Event findById(Long id) throws EventNotFoundException;
     Event saveOrUpdate(Event event);
+    List<Event> getAll();
 }
