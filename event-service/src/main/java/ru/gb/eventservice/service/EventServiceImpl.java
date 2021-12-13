@@ -56,8 +56,4 @@ public class EventServiceImpl implements EventService{
         return saveOrUpdate(EventMapper.MAPPER.fromEventDto(eventDto));
     }
 
-    @Override
-    public List<Event> getAll() {
-        return eventRepository.findAll();
-    }
 }

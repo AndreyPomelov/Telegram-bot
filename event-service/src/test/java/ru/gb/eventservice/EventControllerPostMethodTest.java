@@ -40,6 +40,7 @@ class EventControllerPostMethodTest {
         EventDto eventDto = EventDto.builder()
                 .name("New test")
                 .description("new description")
+                .link("https://mapstruct.org")
                 .dateStart(LocalDateTime.now())
                 .dateEnd(LocalDateTime.now())
                 .tags(tags)
