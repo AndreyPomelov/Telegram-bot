@@ -1,10 +1,10 @@
 package ru.gb.eventservice.mapper;
 
+
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 import ru.gb.eventservice.domain.Event;
-import ru.gb.eventservice.dto.EventDto;
-
+import ru.gb.eventservice.dto.EventDto
 import java.util.List;
 
 

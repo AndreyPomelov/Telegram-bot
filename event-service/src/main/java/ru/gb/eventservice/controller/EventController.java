@@ -13,7 +13,6 @@ import ru.gb.eventservice.dto.Response;
 import ru.gb.eventservice.dto.ResponseAddNewEvent;
 import ru.gb.eventservice.exception.EventNotFoundException;
 import ru.gb.eventservice.service.EventService;
-
 import javax.validation.Valid;
 import java.text.Format;
 import java.util.List;
@@ -41,7 +40,6 @@ public class EventController {
         EventDto event = eventService.findByIdDto(id);
         return ResponseEntity.ok().body(event);
     }
-
     @PostMapping({"","/"})
     public ResponseEntity<ResponseAddNewEvent> addNewEvent(@RequestBody @Valid EventDto eventDto){
         Event newEvent = eventService.saveOrUpdate(eventDto);
