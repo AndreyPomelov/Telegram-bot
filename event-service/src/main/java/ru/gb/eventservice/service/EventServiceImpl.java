@@ -48,7 +48,12 @@ public class EventServiceImpl implements EventService{
 
     @Override
     public Event saveOrUpdate(Event event) {
-        return null;
+        return eventRepository.save(event);
+    }
+
+    @Override
+    public Event saveOrUpdate(EventDto eventDto) {
+        return saveOrUpdate(EventMapper.MAPPER.fromEventDto(eventDto));
     }
 
     @Override
