@@ -4,5 +4,5 @@ import lombok.Data;
 
 @Data
 public class ResponseAddNewEvent extends Response{
-    private Long Id;
+    private Long id;
 }

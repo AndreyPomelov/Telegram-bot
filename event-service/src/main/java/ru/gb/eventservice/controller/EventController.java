@@ -14,7 +14,6 @@ import ru.gb.eventservice.dto.ResponseAddNewEvent;
 import ru.gb.eventservice.exception.EventNotFoundException;
 import ru.gb.eventservice.service.EventService;
 import javax.validation.Valid;
-import java.text.Format;
 import java.util.List;
 import java.util.Map;
 

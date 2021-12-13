@@ -10,7 +10,7 @@ import java.util.List;
 
 @Mapper(imports = {ru.gb.eventservice.domain.Tag.class, java.util.stream.Collectors.class})
 public abstract class EventMapper {
-    public static EventMapper MAPPER = Mappers.getMapper(EventMapper.class);
+    public static final EventMapper MAPPER = Mappers.getMapper(EventMapper.class);
 
     @Mapping(target="tags", expression= "java( event.getTags().stream().map(Tag::getName).collect(Collectors.toList()) )")
     public abstract EventDto fromEvent(Event event);
