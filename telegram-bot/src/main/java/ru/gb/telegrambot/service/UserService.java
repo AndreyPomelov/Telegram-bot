@@ -1,9 +1,6 @@
 package ru.gb.telegrambot.service;
 
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.gb.telegrambot.domain.User;
 import ru.gb.telegrambot.repository.UserRepository;

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 import ru.gb.telegrambot.annotation.BotCommand;
 import ru.gb.telegrambot.domain.User;
 import ru.gb.telegrambot.handler.AbstractHandler;
-import ru.gb.telegrambot.service.UserService;
 
 import java.util.List;
 import java.util.stream.Stream;

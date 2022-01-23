@@ -32,7 +32,7 @@ public class MessageScheduler {
                 messageBuilder.line("[%s](%s)", event.getName(), event.getLink());
                 publisher.publishEvent((new SendMessageEvent(messageBuilder.build())));
             }
-            if(events.size() > 0) {
+            if(!events.isEmpty()) {
                 user.setDateLastNotification(LocalDateTime.now());
                 userService.saveUser(user);
             }

@@ -19,7 +19,7 @@ import java.io.Serializable;
 
 @Component
 @RequiredArgsConstructor
-public class Bot extends TelegramLongPollingBot implements Serializable {
+public class Bot extends TelegramLongPollingBot {
     @Value("${bot.name}")
     @Getter
     private String botUsername;

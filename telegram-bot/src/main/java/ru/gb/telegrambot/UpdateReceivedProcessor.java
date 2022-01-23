@@ -37,7 +37,7 @@ public class UpdateReceivedProcessor {
         }
         if(userID != 0 && text != null) {
 
-            User user = userService.findByChatId(userID).orElseGet(() -> new User());
+            User user = userService.findByChatId(userID).orElseGet(User::new);
             if(user.isNew()) {
                 user.setTelegramId(userID);
                 user.setUserName(userName);
